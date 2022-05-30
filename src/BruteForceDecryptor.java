@@ -81,15 +81,15 @@ public class BruteForceDecryptor {
             }
 
 
-            String regex1 = "\sпри\s";
+//            String regex1 = "\sпри\s";
             String regex2 = "\sна\s";
             String regex3 = "\sв\s";
-            String regex4 = "\sно\s";
-            String regex5 = "\ssа\s";
-            String regex6 = "\sдля\s";
-            String regex7 = "\sпо\s";
-            String regex8 = "\sиз\s";
-            String regex9 = "\sпод\s";
+//            String regex4 = "\sно\s";
+//            String regex5 = "\ssа\s";
+//            String regex6 = "\sдля\s";
+//           String regex7 = "\sпо\s";
+//            String regex8 = "\sиз\s";
+//            String regex9 = "\sпод\s";
 
 //            Pattern pattern1 = Pattern.compile(regex1);
             Pattern pattern2 = Pattern.compile(regex2);
