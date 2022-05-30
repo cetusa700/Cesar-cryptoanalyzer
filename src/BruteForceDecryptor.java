@@ -81,9 +81,9 @@ public class BruteForceDecryptor {
             }
 
 
-//            String regex1 = "\sпри\s";
-            String regex2 = "\sна\s";
-            String regex3 = "\sв\s";
+            String regex1 = "\sпри\s";
+//            String regex2 = "\sна\s";
+//            String regex3 = "\sв\s";
 //            String regex4 = "\sно\s";
 //            String regex5 = "\ssа\s";
 //            String regex6 = "\sдля\s";
@@ -91,9 +91,9 @@ public class BruteForceDecryptor {
 //            String regex8 = "\sиз\s";
 //            String regex9 = "\sпод\s";
 
-//            Pattern pattern1 = Pattern.compile(regex1);
-            Pattern pattern2 = Pattern.compile(regex2);
-            Pattern pattern3 = Pattern.compile(regex3);
+            Pattern pattern1 = Pattern.compile(regex1);
+//            Pattern pattern2 = Pattern.compile(regex2);
+//            Pattern pattern3 = Pattern.compile(regex3);
 //            Pattern pattern4 = Pattern.compile(regex4);
 //            Pattern pattern5 = Pattern.compile(regex5);
 //            Pattern pattern6 = Pattern.compile(regex6);
@@ -107,9 +107,9 @@ public class BruteForceDecryptor {
                 for (Character character : charsFromFile) {
                     decryptedText.append(character);
                 }
-//                Matcher matcher1 = pattern1.matcher(decryptedText);
-                Matcher matcher2 = pattern2.matcher(decryptedText);
-                Matcher matcher3 = pattern3.matcher(decryptedText);
+                Matcher matcher1 = pattern1.matcher(decryptedText);
+//                Matcher matcher2 = pattern2.matcher(decryptedText);
+//                Matcher matcher3 = pattern3.matcher(decryptedText);
 //                Matcher matcher4 = pattern4.matcher(decryptedText);
 //                Matcher matcher5 = pattern5.matcher(decryptedText);
 //                Matcher matcher6 = pattern6.matcher(decryptedText);
@@ -117,7 +117,7 @@ public class BruteForceDecryptor {
 //                Matcher matcher8 = pattern8.matcher(decryptedText);
 //                Matcher matcher9 = pattern9.matcher(decryptedText);
 
-                if (matcher2.find() && matcher3.find()) {
+                if (matcher1.find()) {
                     System.out.println("\n The file has been decrypted, \n" +
                             "check it please. \n");
                     break;
