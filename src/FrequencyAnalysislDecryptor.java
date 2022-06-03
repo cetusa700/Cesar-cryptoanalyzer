@@ -12,8 +12,6 @@
  */
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,52 +19,18 @@ public class FrequencyAnalysislDecryptor {
     int key;
 
     void frequencyAnalysisDecryption() {
-        String sourceFileName = null;
-        String destDecryptFile = null;
         ArrayList<Character> charsFromFile;
-        boolean sameNames = true;
-        boolean correctFileName = false;
+        ArrayList<String > fileNames;
+        Scanner console; // = new Scanner(System.in);
+        System.out.println("Please enter the path and filename you want to decrypt \n" +
+                " and then filename you want write result");
 
-        Scanner console = new Scanner(System.in);
-        System.out.println("""
-                Please enter the path to the file you want to decrypt,\s
-                file extension must be   ".txt"\s
-                Please note the names encrypted and decrypted files must not be the same\s""");
+        fileNames = FileNameValidation.setFileNames();
+        String sourceFileName = fileNames.get(0);
+        String destFileName = fileNames.get(1);
 
-        while (sameNames) {
-            while (!correctFileName) {
-                sourceFileName = console.nextLine();
-                if (!FileExtensionValidation.validateFileExtension(sourceFileName)) {
-                    System.out.println("You have entered incorrect file name. \n" +
-                            "Please try again.");
-                } else if (Files.notExists(Path.of(sourceFileName))) {
-                    System.out.println("File not found! Please correct the filepath!");
-                } else {
-                    correctFileName = true;
-                }
-            }
-
-            correctFileName = false;
-            System.out.println("Please enter the path to the decrypted file\n" +
-                    "file extension must be   \".txt\" : ");
-
-            while (!correctFileName) {
-                destDecryptFile = console.nextLine();
-                if (!FileExtensionValidation.validateFileExtension(destDecryptFile)) {
-                    System.out.println("You have entered incorrect file name. \n" +
-                            "Please try again.");
-                } else {
-                    correctFileName = true;
-                }
-            }
-            if (sourceFileName.equals(destDecryptFile)) {
-                System.out.println("You have entered decrypted file name the same with encrypted file! \n" +
-                        " Please correct it and repeat entering decrypted file name");
-            } else
-                sameNames = false;
-        }
         try (FileReader fileReader = new FileReader(sourceFileName);
-             FileWriter fileWriter = new FileWriter(destDecryptFile);
+             FileWriter fileWriter = new FileWriter(destFileName);
              BufferedReader bufferedReader = new BufferedReader(fileReader);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
 

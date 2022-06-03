@@ -5,9 +5,44 @@
  * надо.
  * */
 
+import java.util.Scanner;
+
 class KeyValueValidation {
-static int maxKeyValue = Alphabet.fillCharsListFromAlphabet().size() - 1;
-    static boolean validateKey(int key) {
+
+    static int validateKey() {
+        int key = 0;
+        Scanner console;
+        System.out.println("Please enter crypto Key. It must be positive number and \n" +
+                "must not be a multiple 74 : ");
+
+        boolean keyIsCorrect = false;
+        while (!keyIsCorrect) {
+            console = new Scanner(System.in);
+            if (console.hasNextInt()) {
+                boolean keyIsValid = false;
+                while (!keyIsValid) {
+
+                    key = console.nextInt();
+
+                    if (!KeyValueValidation.validateKeyValue(key)) {
+                        System.out.println("You have entered incorrect key value. \n"
+                                + "Please try again");
+                    } else {
+                        keyIsValid = true;
+                        keyIsCorrect = true;
+                    }
+                }
+            } else {
+                System.out.println("You have entered not an integer number. \n" +
+                        "Please try again");
+            }
+        }
+        return key;
+    }
+
+    static int maxKeyValue = Alphabet.fillCharsListFromAlphabet().size() - 1;
+
+    static boolean validateKeyValue(int key) {
         return key > 0 && (key % (maxKeyValue + 1)) != 0;
     }
 }
