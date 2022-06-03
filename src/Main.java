@@ -1,6 +1,6 @@
 /*
- * Комментариев почти нет, только общие в начале двух классов (CesarEncryptor и BruteForceDecryptor. Проект небольшой,
- * поэтому код и без них понятен, надеюсь ))
+ * Комментариев почти нет, только общие в начале двух классов (CesarEncryptor, BruteForceDecryptor и
+ * FrequencyAnalysisDecryptor. Проект небольшой,  поэтому код и без них понятен, надеюсь ))
  */
 
 import javax.sound.midi.Soundbank;
@@ -19,9 +19,8 @@ public class Main {
                     "\" 1 \"  if encrypt a file MODE\n" +
                     "\" 2 \"  if decrypt a file by Cesar MODE\n" +
                     "\" 3 \"  if decrypt by Brute Force MODE\n" +
-                    "\" 4 \"  if you want to Exit from program\n"
-//                   + "\" 5 \"  for Statistic Mode\n");
-                    );
+                    "\" 4 \"  for Statistic Mode (Frequency Analysis)\n" +
+                    "\" 5 \"  if you want to Exit from program\n");
 
             if (console.hasNextInt()) {
                 int mode = console.nextInt();
@@ -38,11 +37,16 @@ public class Main {
                         BruteForceDecryptor bruteForce = new BruteForceDecryptor();
                         bruteForce.bruteForce();
                     }
+
                     case 4 -> {
+                        FrequencyAnalysislDecryptor frequencyAnalysislDecryptor = new FrequencyAnalysislDecryptor();
+                        frequencyAnalysislDecryptor.frequencyAnalysisDecryption();
+                    }
+
+                    case 5 -> {
                         exit = true;
                         console.close();
                     }
-//           case 5 -> { StatisticalDecryptor; }
 
                     default -> System.out.println("Please enter correct number to select desired action");
                 }

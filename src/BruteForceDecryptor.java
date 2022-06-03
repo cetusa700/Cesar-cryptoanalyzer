@@ -11,6 +11,7 @@
  * regex по желаемому выбору и повторить поиск ключа. Хотя, повторюсь, у меня такого не было с различными текстами.
  * На 100% работает и по предлогу "при". Одно из самых часто встречаемых слов.
  */
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,9 +25,10 @@ public class BruteForceDecryptor {
     int key;
 
     void bruteForce() {
+
+        ArrayList<Character> charsFromFile;
         String sourceFileName = null;
         String destDecryptFile = null;
-        ArrayList<Character> charsFromFile;
         boolean sameNames = true;
         boolean correctFileName = false;
 
@@ -68,6 +70,7 @@ public class BruteForceDecryptor {
             } else
                 sameNames = false;
         }
+
         try (FileReader fileReader = new FileReader(sourceFileName);
              FileWriter fileWriter = new FileWriter(destDecryptFile);
              BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -79,26 +82,11 @@ public class BruteForceDecryptor {
                 charsFromFile.add((char) ch);
             }
 
+            String regex1 = "\sна\s";
+            String regex2 = "\sв\s";
 
-            String regex1 = "\sпри\s";
-            String regex2 = "\sна\s";
-            String regex3 = "\sв\s";
-            String regex4 = "\sно\s";
-            String regex5 = "\ssа\s";
-            String regex6 = "\sдля\s";
-            String regex7 = "\sпо\s";
-            String regex8 = "\sиз\s";
-            String regex9 = "\sпод\s";
-
-//            Pattern pattern1 = Pattern.compile(regex1);
+            Pattern pattern1 = Pattern.compile(regex1);
             Pattern pattern2 = Pattern.compile(regex2);
-            Pattern pattern3 = Pattern.compile(regex3);
-//            Pattern pattern4 = Pattern.compile(regex4);
-//            Pattern pattern5 = Pattern.compile(regex5);
-//            Pattern pattern6 = Pattern.compile(regex6);
-//            Pattern pattern7 = Pattern.compile(regex7);
-//            Pattern pattern8 = Pattern.compile(regex8);
-//            Pattern pattern9 = Pattern.compile(regex9);
 
             for (key = 1; key < charsFromFile.size() - 1; key++) {
                 CesarDecryptor.decryptToCharList(Alphabet.fillCharsListFromAlphabet(), charsFromFile, key);
@@ -106,15 +94,9 @@ public class BruteForceDecryptor {
                 for (Character character : charsFromFile) {
                     decryptedText.append(character);
                 }
-//                Matcher matcher1 = pattern1.matcher(decryptedText);
-                Matcher matcher2 = pattern2.matcher(decryptedText);
-                Matcher matcher3 = pattern3.matcher(decryptedText);
-//                Matcher matcher4 = pattern4.matcher(decryptedText);
-//                Matcher matcher5 = pattern5.matcher(decryptedText);
-//                Matcher matcher6 = pattern6.matcher(decryptedText);
-//                Matcher matcher7 = pattern7.matcher(decryptedText);
-//                Matcher matcher8 = pattern8.matcher(decryptedText);
-//                Matcher matcher9 = pattern9.matcher(decryptedText);
+
+                Matcher matcher2 = pattern1.matcher(decryptedText);
+                Matcher matcher3 = pattern2.matcher(decryptedText);
 
                 if (matcher2.find() && matcher3.find()) {
                     System.out.println("\n The file has been decrypted, \n" +

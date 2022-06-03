@@ -6,7 +6,7 @@ class Alphabet {
     static final List<Character> ALPHABET = new ArrayList<>();
 
     static ArrayList<Character> fillCharsListFromAlphabet() {
-        String charsString = " " + "!\"(),-.:?АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" + "абвгдежзийклмнопрстуфхцчшщъыьэюя";
+        String charsString = " " + "!\"(),-.:?" + "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" + "абвгдежзийклмнопрстуфхцчшщъыьэюя";
 
         for (char c : charsString.toCharArray()) {
             ALPHABET.add(c);

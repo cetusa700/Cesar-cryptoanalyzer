@@ -10,9 +10,9 @@ class CesarDecryptor {
     int key;
 
     void decryption() {
+        ArrayList<Character> charsFromFile;
         String sourceFileName = null;
         String destDecryptedFile = null;
-        ArrayList<Character> charsFromFile;
         boolean sameNames = true;
         boolean correctFileName = false;
 
@@ -103,7 +103,7 @@ class CesarDecryptor {
     }
 
     /*
-     * метод аналогичен методу из класса CesarEncryptor, только работает наоборот (дешифрует).
+     * метод аналогичен методу из класса CesarEncryptor, только работает наоборот (шифрует).
      */
     static void decryptToCharList(ArrayList<Character> charsFromAlphabet,
                                   ArrayList<Character> charsListFromFile,
